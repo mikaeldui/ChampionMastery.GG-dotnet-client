@@ -7,7 +7,7 @@ You can install it using the following package manager command:
     
 Example usage:
 
-    using (var client = new ChampionMasteryClient())
+    using (var client = new ChampionMasteryGgClient())
     {
         var mastery = await client.GetChampionMasteryAsync("19MILITANT93", "EUW");
         foreach (var champion in mastery)
