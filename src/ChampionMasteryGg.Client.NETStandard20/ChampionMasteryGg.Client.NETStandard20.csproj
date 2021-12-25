@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>ChampionMasteryGg</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="..\ChampionMasteryGg.Client\ChampionMasteryGg.Client.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.39" />
+  </ItemGroup>
+
+</Project>

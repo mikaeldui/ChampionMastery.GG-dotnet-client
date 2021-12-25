@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChampionMasteryGg.Client", "src\ChampionMasteryGg.Client\ChampionMasteryGg.Client.shproj", "{511355B1-A48F-4D21-9C48-2C24104BEA9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionMasteryGg.Client.NETStandard20", "src\ChampionMasteryGg.Client.NETStandard20\ChampionMasteryGg.Client.NETStandard20.csproj", "{471FBCE8-4796-4E3D-9D3B-61B452C13950}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionMasteryGg.Client.NET6", "src\ChampionMasteryGg.Client.NET6\ChampionMasteryGg.Client.NET6.csproj", "{B20DFC6B-1FAE-4FBC-AA3E-722F73615970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionMasteryGg.Client.NETStandard21", "src\ChampionMasteryGg.Client.NETStandard21\ChampionMasteryGg.Client.NETStandard21.csproj", "{1CB99153-6355-4297-96F1-7D4148C9B07B}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\ChampionMasteryGg.Client\ChampionMasteryGg.Client.projitems*{1cb99153-6355-4297-96f1-7d4148c9b07b}*SharedItemsImports = 5
+		src\ChampionMasteryGg.Client\ChampionMasteryGg.Client.projitems*{471fbce8-4796-4e3d-9d3b-61b452c13950}*SharedItemsImports = 5
+		src\ChampionMasteryGg.Client\ChampionMasteryGg.Client.projitems*{511355b1-a48f-4d21-9c48-2c24104bea9a}*SharedItemsImports = 13
+		src\ChampionMasteryGg.Client\ChampionMasteryGg.Client.projitems*{b20dfc6b-1fae-4fbc-aa3e-722f73615970}*SharedItemsImports = 5
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{471FBCE8-4796-4E3D-9D3B-61B452C13950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471FBCE8-4796-4E3D-9D3B-61B452C13950}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471FBCE8-4796-4E3D-9D3B-61B452C13950}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{471FBCE8-4796-4E3D-9D3B-61B452C13950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B20DFC6B-1FAE-4FBC-AA3E-722F73615970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B20DFC6B-1FAE-4FBC-AA3E-722F73615970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B20DFC6B-1FAE-4FBC-AA3E-722F73615970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B20DFC6B-1FAE-4FBC-AA3E-722F73615970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB99153-6355-4297-96F1-7D4148C9B07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB99153-6355-4297-96F1-7D4148C9B07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB99153-6355-4297-96F1-7D4148C9B07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB99153-6355-4297-96F1-7D4148C9B07B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC7770DE-A0D1-4776-8EEC-A372E0DC9094}
+	EndGlobalSection
+EndGlobal
