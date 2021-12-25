@@ -2,9 +2,10 @@ name: .NET Build & Test
 
 on:
   push:
-    branches: [ main ]
+    branches: '*'
+    branches-ignore: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: '*'
 
 jobs:
   build:
