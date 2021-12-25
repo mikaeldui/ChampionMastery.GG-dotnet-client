@@ -3,18 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace ChampionMasteryGg
 {
     public class ChampionMasteryGgClient : IDisposable
     {
+        private static readonly string VERSION = typeof(ChampionMasteryGgClient).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+
         private HttpClient _httpClient;
 
         public ChampionMasteryGgClient()
         {
             _httpClient = new HttpClient();
-            _httpClient.DefaultRequestHeaders.Add("User-Agent", "ChampionMastery.GG-uwp/dev (github.com/mikaeldui/ChampionMastery.GG-uwp)");
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", $"ChampionMastery.GG-dotnet-client/{VERSION} (github.com/mikaeldui/ChampionMastery.GG-dotnet-client)");
         }
 
         public async Task<ChampionMasteryGgChampionMastery[]> GetChampionMasteryAsync(string username, string region)
