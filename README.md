@@ -1,10 +1,14 @@
 # ChampionMastery.GG .NET Client
-A .NET client for ChampionMastery.GG. Created for use by [ChampionMastery.GG-uwp](https://github.com/mikaeldui/ChampionMastery.GG-uwp) and [ChampionMastery.GG-winui](https://github.com/mikaeldui/ChampionMastery.GG-winui).
+A .NET client for [ChampionMastery.GG](https://github.com/Derpthemeus/ChampionMastery.GG). 
 
+Created for use by [ChampionMastery.GG-uwp](https://github.com/mikaeldui/ChampionMastery.GG-uwp) and [ChampionMastery.GG-winui](https://github.com/mikaeldui/ChampionMastery.GG-winui).
+
+## Installation
 You can install it using the following package manager command:
 
     Install-Package MikaelDui.ChampionMasteryGg.Client
-    
+  
+## Example
 Example usage:
 
     using (var client = new ChampionMasteryGgClient())
