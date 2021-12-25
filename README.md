@@ -1,2 +1,2 @@
-# ChampionMastery.GG-dotnet-client
-A .NET client for ChampionMastery.GG.
+# ChampionMastery.GG .NET Client
+A .NET client for ChampionMastery.GG. Created for use by [ChampionMastery.GG-uwp](https://github.com/mikaeldui/ChampionMastery.GG-uwp) and For a Win UI version, see [ChampionMastery.GG-winui](https://github.com/mikaeldui/ChampionMastery.GG-winui).
