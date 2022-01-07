@@ -26,9 +26,9 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Create version
       id: version
-      run: echo "::set-output name=version::${$TAG_VERSION#v}"
-      env:
-        TAG_VERSION: steps.tag_version.outputs.new_tag
+      run: |
+        version=$(echo ${{steps.tag_version.outputs.new_tag}} | cut -c2-)
+        echo "::set-output name=version::$version"
     - name: Pack
       run: dotnet pack --configuration Release --no-build /p:Version=${{ steps.version.outputs.version }}
     - name: Push package to NuGet.org
