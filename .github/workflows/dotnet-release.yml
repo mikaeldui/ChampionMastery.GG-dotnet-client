@@ -33,9 +33,9 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release --no-build /p:Version=${{ steps.version.outputs.version }}
     - name: Push package to NuGet.org
-      run: dotnet nuget push /src/ChampionMasteryGg.Client.MultiTarget/bin/Release/*.nupkg -k ${{ secrets.NUGET_ORG_API_KEY }} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./src/ChampionMasteryGg.Client.MultiTarget/bin/Release/*.nupkg -k ${{ secrets.NUGET_ORG_API_KEY }} -s https://api.nuget.org/v3/index.json
     - name: Push package to GitHub.com
-      run: dotnet nuget push /src/ChampionMasteryGg.Client.MultiTarget/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/mikaeldui/index.json
+      run: dotnet nuget push ./src/ChampionMasteryGg.Client.MultiTarget/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/mikaeldui/index.json
     - name: Create tag for real
       uses: mathieudutour/github-tag-action@v6.0
       with:
