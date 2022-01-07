@@ -50,8 +50,13 @@ jobs:
         body: |
           You can install [this specific version from NuGet.org](https://www.nuget.org/packages/MikaelDui.ChampionMasteryGg.Client/${{ steps.version.outputs.version }}) using either of these commands:
           Using **Package Manager Console**:
+
               PM> Install-Package MikaelDui.ChampionMasteryGg.Client --Version ${{ inputs.version }}
+
           Using the **.NET CLI**:
+
               dotnet add package MikaelDui.ChampionMasteryGg.Client --version ${{ inputs.version }}
+
           But it's preferable to use **floating versions**.
-            ${{ steps.tag_version.outputs.changelog }}
+
+          ${{ steps.tag_version.outputs.changelog }}
