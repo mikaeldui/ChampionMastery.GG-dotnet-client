@@ -4,9 +4,17 @@ A .NET client for [ChampionMastery.GG](https://github.com/Derpthemeus/ChampionMa
 Created for use by [ChampionMastery.GG-uwp](https://github.com/mikaeldui/ChampionMastery.GG-uwp) and [ChampionMastery.GG-winui](https://github.com/mikaeldui/ChampionMastery.GG-winui).
 
 ## Installation
-You can install it using the following package manager command:
+You can install it using the following **package manager** command:
 
     Install-Package MikaelDui.ChampionMasteryGg.Client
+
+Or use the **.NET CLI** and add a reference with a floating version:
+
+    dotnet add package MikaelDui.ChampionMasteryGg.Client --version *
+
+Or add it as a **PackageReference**:
+
+    <PackageReference Include="MikaelDui.ChampionMasteryGg.Client" Version="*" />
   
 ## Example
 Example usage:
