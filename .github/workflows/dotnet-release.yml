@@ -30,9 +30,13 @@ jobs:
       run: |
         version=$(echo ${{steps.tag_version.outputs.new_tag}} | cut -c2-)
         echo "::set-output name=version::$version"
+        
+    - name: SemVer suffix
+      id: semver
+      uses: mikaeldui/actions/nuget-generate-semver-suffix@main
 
     - name: Pack
-      run: dotnet pack --configuration Release --no-build /p:Version=${{ steps.version.outputs.version }}
+      run: dotnet pack --configuration Release --no-build /p:Version=${{ steps.version.outputs.version }}${{ steps.semver.outputs.suffix }}
       
     - name: Push
       uses: mikaeldui/actions/dotnet-push@main
