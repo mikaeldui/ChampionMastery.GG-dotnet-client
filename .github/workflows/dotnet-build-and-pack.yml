@@ -26,8 +26,9 @@ jobs:
     - name: Create version
       id: version
       run: |
-        version=$(echo ${{steps.tag_version.outputs.new_tag}} | cut -c2-)
+        version=$(echo ${{ steps.tag_version.outputs.new_tag }} | cut -c2-)
         echo "::set-output name=version::$version"
+      shell: bash
         
     - name: SemVer suffix
       id: semver
@@ -35,12 +36,15 @@ jobs:
         
     - name: Restore dependencies
       run: dotnet restore
+      shell: bash
       
     - name: Build
       run: dotnet build --no-restore --configuration Release /p:Version=${{ steps.version.outputs.version }}${{ steps.semver.outputs.suffix }}
+      shell: bash
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      shell: bash
       
       # Pack & Publish
       
