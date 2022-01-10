@@ -6,72 +6,28 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x
-        
-    - name: Create tag dry run
-      id: tag_version
-      uses: mathieudutour/github-tag-action@v6.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        dry_run: true
-        
-    - name: Create version
-      id: version
-      run: |
-        version=$(echo ${{steps.tag_version.outputs.new_tag}} | cut -c2-)
-        echo "::set-output name=version::$version"
-        
-    - name: SemVer suffix
-      id: semver
-      uses: mikaeldui/actions/nupkg/semver-suffix@main
-        
-    - name: Restore dependencies
-      run: dotnet restore
+    uses: mikaeldui/ChampionMastery.GG-dotnet-client/.github/workflows/dotnet-build-and-pack.yml@main
       
-    - name: Build
-      run: dotnet build --no-restore --configuration Release /p:Version=${{ steps.version.outputs.version }}${{ steps.semver.outputs.suffix }}
-      
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+  nuget-org:
+    name: 'NuGet.org'
+    if: ${{ (github.ref == 'refs/heads/main' && github.event_name == 'push') || github.event_name == 'pull_request' || (startsWith(github.ref, 'refs/heads/features') && github.event_name == 'push') }}
+    uses: mikaeldui/actions/.github/workflows/nuget.org-deploy.yml@main
+    needs: build
+    secrets:
+      NUGET_ORG_API_KEY: ${{ secrets.NUGET_ORG_API_KEY }}
 
-    - name: Pack
-      run: dotnet pack --configuration Release --no-build /p:Version=${{ steps.version.outputs.version }}${{ steps.semver.outputs.suffix }}
-      
-    - name: Push
-      uses: mikaeldui/actions/nupkg/dotnet/push@main
-      with:
-        path: ./src/ChampionMasteryGg.Client.MultiTarget/bin/Release/*.nupkg
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NUGET_ORG_API_KEY: ${{ secrets.NUGET_ORG_API_KEY }}
+  github-packages:
+    name: 'GitHub Packages'
+    if: ${{ (github.ref == 'refs/heads/main' && github.event_name == 'push') || github.event_name == 'pull_request' || (startsWith(github.ref, 'refs/heads/features') && github.event_name == 'push') }}
+    uses: mikaeldui/actions/.github/workflows/github-packages-deploy.yml@main
+    needs: build
 
-    - name: Create tag for real
-      uses: mathieudutour/github-tag-action@v6.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-      
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: "*.nupkg"
-        token: ${{ github.token }}
-        name: ${{ inputs.version }}
-        tag: ${{ steps.tag_version.outputs.new_tag }}
-        body: |
-          You can install [this specific version from NuGet.org](https://www.nuget.org/packages/MikaelDui.ChampionMasteryGg.Client/${{ steps.version.outputs.version }}) using either of these commands:
-          Using **Package Manager Console**:
-
-              PM> Install-Package MikaelDui.ChampionMasteryGg.Client --Version ${{ inputs.version }}
-
-          Using the **.NET CLI**:
-
-              dotnet add package MikaelDui.ChampionMasteryGg.Client --version ${{ inputs.version }}
-
-          But it's preferable to use **floating versions**.
-
+  github-release:
+    name: 'GitHub Release'
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+    uses: mikaeldui/actions/.github/workflows/github-release.yml@main
+    needs: [nuget-org, github-packages]
+    with:
+      github_packages_url: ${{ needs.github-packages.outputs.url }}
+      nuget_org_url: ${{ needs.nuget-org.outputs.url }}
           ${{ steps.tag_version.outputs.changelog }}
