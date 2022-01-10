@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: "Build & Pack"
     uses: mikaeldui/ChampionMastery.GG-dotnet-client/.github/workflows/dotnet-build-and-pack.yml@main
       
   nuget-org:
