@@ -1,15 +1,13 @@
 name: .NET Build & Deploy
 
-on:
-  push:
-    branches: [ main, 'features/*' ]
-  pull_request:
-    branches: [ '*' ]
+on: [ 'push', 'pull_request' ]
 
 jobs:
   build:
     name: "Build & Pack"
-    uses: mikaeldui/ChampionMastery.GG-dotnet-client/.github/workflows/dotnet-build-and-pack.yml@main
+    uses: mikaeldui/actions/.github/workflows/dotnet-build-and-pack.yml@main
+    with:
+      project_directory: ./ChampionMasteryGg.Client
       
   nuget-org:
     name: 'NuGet.org'
