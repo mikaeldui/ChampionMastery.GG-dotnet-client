@@ -1,11 +1,14 @@
-name: .NET Release
+name: .NET Build & Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, 'features/*' ]
+  pull_request:
+    branches: [ '*' ]
 
 jobs:
   build:
+    name: "Build & Pack"
     uses: mikaeldui/ChampionMastery.GG-dotnet-client/.github/workflows/dotnet-build-and-pack.yml@main
       
   nuget-org:
