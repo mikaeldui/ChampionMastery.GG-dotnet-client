@@ -62,12 +62,12 @@ namespace ChampionMasteryGg
         public static PointsHighscore ParsePointsHighscore(HtmlNode div) =>
                 new PointsHighscore(
                     Summoner.FromLinkNode(div.ChildNodes("a").First()),
-                    div.Descendants("span").First().Attributes["data-format-number"].Value.ToInt());
+                    div.ChildNodes("span").First().Attributes["data-format-number"].Value.ToInt());
 
         public static LevelHighscore ParseLevelsHighscore(HtmlNode div) =>
                 new LevelHighscore(
                     Summoner.FromLinkNode(div.ChildNodes("a").First()),
-                    div.Descendants("span").First().Attributes["data-format-number"].Value.ToInt());
+                    div.ChildNodes("span").First().Attributes["data-format-number"].Value.ToInt());
 
         internal static PointHighscoreReadOnlyCollection ParsePointHighscoreChampionInfoNode(HtmlNode championInfoNode) =>
             new PointHighscoreReadOnlyCollection(championInfoNode.ChildNodes("div").Select(ParsePointsHighscore).ToArray());
