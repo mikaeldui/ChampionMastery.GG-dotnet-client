@@ -26,13 +26,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         dry_run: true
         
-    - name: Create version
-      id: version
-      run: |
-        version=$(echo ${{ steps.tag.outputs.new_tag }} | cut -c2-)
-        echo "::set-output name=version::$version"
-      shell: bash
-        
     - name: SemVer suffix
       id: semver
       uses: mikaeldui/actions/nupkg/semver-suffix@main
@@ -42,7 +35,7 @@ jobs:
       shell: bash
       
     - name: Build
-      run: dotnet build --no-restore --configuration Release /p:Version=${{ steps.version.outputs.version }}${{ steps.semver.outputs.suffix }}
+      run: dotnet build --no-restore --configuration Release /p:Version=${{ steps.tag.outputs.version }}${{ steps.semver.outputs.suffix }}
       shell: bash
       
     - name: Test
@@ -54,7 +47,7 @@ jobs:
     - name: 'Pack & Publish Artifact'
       uses: mikaeldui/actions/nupkg/dotnet/pack-and-publish-artifact@main
       with:
-        version: ${{ steps.version.outputs.version }}${{ steps.semver.outputs.suffix }}
+        version: ${{ steps.tag.outputs.version }}${{ steps.semver.outputs.suffix }}
         project_directory: ./
         relative_package_path: src/ChampionMasteryGg.Client.MultiTarget/bin/Release/*.nupkg
         
