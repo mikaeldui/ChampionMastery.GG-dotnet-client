@@ -9,7 +9,9 @@ on:
 jobs:
   build:
     name: "Build & Pack"
-    uses: mikaeldui/ChampionMastery.GG-dotnet-client/.github/workflows/dotnet-build-and-pack.yml@main
+    uses: mikaeldui/actions/.github/workflows/dotnet-build-and-pack.yml@main
+    with:
+      project_directory: ./ChampionMasteryGg.Client
       
   nuget-org:
     name: 'NuGet.org'
