@@ -8,9 +8,8 @@
     <RootNamespace>ChampionMasteryGg</RootNamespace>
     <PackageId>MikaelDui.ChampionMasteryGg.Client</PackageId>
     <Authors>Mikael Dúi Bolinder</Authors>
-    <Company />
     <Product>MikaelDui.ChampionMasteryGg.Client</Product>
-    <Description>A .NET client for ChampionMastery.GG.</Description>
+    <Description>An unofficial .NET client for ChampionMastery.GG. Get masteries and leaderboards for League of Legends!</Description>
     <PackageProjectUrl>https://github.com/mikaeldui/ChampionMastery.GG-dotnet-client</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>ChampionMasteryGg-512x512.png</PackageIcon>
@@ -31,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.39" />
+    <PackageReference Include="HtmlAgilityPack" Version="*" />
   </ItemGroup>
 
   <Import Project="..\ChampionMasteryGg.Client\ChampionMasteryGg.Client.projitems" Label="Shared" />
