@@ -2,7 +2,7 @@ name: .NET Release
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, 'features/*' ]
   pull_request:
     branches: [ '*' ]
 

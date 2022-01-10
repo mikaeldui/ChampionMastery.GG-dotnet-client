@@ -2,7 +2,7 @@ name: .NET Build & Test
 
 on:
   push:
-    branches-ignore: [ main ]
+    branches-ignore: [ main, 'features/*' ]
   pull_request:
     branches-ignore: [ main ]
   workflow_call:
