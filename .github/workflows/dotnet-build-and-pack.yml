@@ -4,7 +4,7 @@ on:
   push:
     branches-ignore: [ main ]
   pull_request:
-    branches: '*'
+    branches-ignore: [ main ]
   workflow_call:
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
       shell: bash
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --configuration Release --verbosity normal
       shell: bash
       
       # Pack & Publish
@@ -48,6 +48,4 @@ jobs:
       uses: mikaeldui/actions/nupkg/dotnet/pack-and-publish-artifact@main
       with:
         version: ${{ steps.tag.outputs.version }}${{ steps.semver.outputs.suffix }}
-        project_directory: ./
-        relative_package_path: src/ChampionMasteryGg.Client.MultiTarget/bin/Release/*.nupkg
-        
+        project_directory: ./ChampionMasteryGg.Client

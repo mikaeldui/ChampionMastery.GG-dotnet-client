@@ -19,11 +19,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\ChampionMasteryGg-512x512.png">
+    <None Include="..\ChampionMasteryGg-512x512.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="..\..\README.md">
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
@@ -32,7 +32,5 @@
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="*" />
   </ItemGroup>
-
-  <Import Project="..\ChampionMasteryGg.Client\ChampionMasteryGg.Client.projitems" Label="Shared" />
 
 </Project>

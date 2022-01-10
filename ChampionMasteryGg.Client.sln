@@ -3,15 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ChampionMasteryGg.Client", "src\ChampionMasteryGg.Client\ChampionMasteryGg.Client.shproj", "{511355B1-A48F-4D21-9C48-2C24104BEA9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChampionMasteryGg.Client", "ChampionMasteryGg.Client\ChampionMasteryGg.Client.csproj", "{F7C13D84-77E0-4E07-8FDE-B4CE6795EF55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChampionMasteryGg.Client.MultiTarget", "src\ChampionMasteryGg.Client.MultiTarget\ChampionMasteryGg.Client.MultiTarget.csproj", "{F7C13D84-77E0-4E07-8FDE-B4CE6795EF55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionMasteryGg.Client.Tests", "ChampionMasteryGg.Client.Tests\ChampionMasteryGg.Client.Tests.csproj", "{30F30F68-C986-4CFE-A5DC-CEDE5AB7C1EE}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		src\ChampionMasteryGg.Client\ChampionMasteryGg.Client.projitems*{511355b1-a48f-4d21-9c48-2c24104bea9a}*SharedItemsImports = 13
-		src\ChampionMasteryGg.Client\ChampionMasteryGg.Client.projitems*{f7c13d84-77e0-4e07-8fde-b4ce6795ef55}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -21,6 +17,10 @@ Global
 		{F7C13D84-77E0-4E07-8FDE-B4CE6795EF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7C13D84-77E0-4E07-8FDE-B4CE6795EF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7C13D84-77E0-4E07-8FDE-B4CE6795EF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F30F68-C986-4CFE-A5DC-CEDE5AB7C1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F30F68-C986-4CFE-A5DC-CEDE5AB7C1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F30F68-C986-4CFE-A5DC-CEDE5AB7C1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F30F68-C986-4CFE-A5DC-CEDE5AB7C1EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
