@@ -30,4 +30,3 @@ jobs:
     with:
       github_packages_url: ${{ needs.github-packages.outputs.url }}
       nuget_org_url: ${{ needs.nuget-org.outputs.url }}
-          ${{ steps.tag_version.outputs.changelog }}
