@@ -55,7 +55,7 @@ jobs:
         languages: ${{ matrix.language }}
       
     - name: Build
-      run: dotnet build --no-restore --configuration Release  
+      run: dotnet build --no-restore --configuration Release /p:UseSharedCompilation=false
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
