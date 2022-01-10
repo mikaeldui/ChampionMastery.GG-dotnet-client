@@ -4,21 +4,21 @@ using System.Text;
 
 namespace ChampionMasteryGg
 {
-    public interface IChampionMasteryGgChampionMasteryProgress
+    public interface IMasteryProgress : IChampionMasteryGgObject
     {
         string ToShortString();
     }
 
-    public struct ChampionMasteryGgChampionMasteryProgressMastered : IChampionMasteryGgChampionMasteryProgress
+    public struct MasteryProgressMastered : IMasteryProgress
     {
         public override string ToString() => "Mastered";
 
         public string ToShortString() => ToString();
     }
 
-    public struct ChampionMasteryGgChampionMasteryProgressTokens : IChampionMasteryGgChampionMasteryProgress
+    public struct MasteryProgressTokens : IMasteryProgress
     {
-        public ChampionMasteryGgChampionMasteryProgressTokens(int has, int total)
+        public MasteryProgressTokens(int has, int total)
         {
             Has = has;
             Total = total;
@@ -32,9 +32,9 @@ namespace ChampionMasteryGg
         public string ToShortString() => ToString();
     }
 
-    public struct ChampionMasteryGgChampionMasteryProgressPoints : IChampionMasteryGgChampionMasteryProgress
+    public struct MasteryProgressPoints : IMasteryProgress
     {
-        public ChampionMasteryGgChampionMasteryProgressPoints(int has, int total)
+        public MasteryProgressPoints(int has, int total)
         {
             Has = has;
             Total = total;

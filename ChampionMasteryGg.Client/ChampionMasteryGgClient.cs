@@ -8,7 +8,7 @@ using static ChampionMasteryGg.Parser;
 
 namespace ChampionMasteryGg
 {
-    public class ChampionMasteryGgClient : IDisposable
+    public class ChampionMasteryGgClient : ChampionMasteryGgObject, IDisposable
     {
         private static readonly string VERSION = typeof(ChampionMasteryGgClient).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
 
@@ -20,10 +20,16 @@ namespace ChampionMasteryGg
             _httpClient.DefaultRequestHeaders.Add("User-Agent", $"ChampionMastery.GG-dotnet-client/{VERSION} (github.com/mikaeldui/ChampionMastery.GG-dotnet-client)");
         }
 
-        public async Task<ChampionMasteryGgChampionMastery[]> GetChampionMasteriesAsync(string username, string region)
+        public async Task<Mastery[]> GetChampionMasteriesAsync(string username, string region)
         {
-            var result = await _httpClient.GetStringAsync($"https://championmastery.gg/summoner?region={region}&summoner={Uri.EscapeDataString(username)}");
-            return await ParseSummonerMasteries(result);
+            var html = await _httpClient.GetStringAsync($"https://championmastery.gg/summoner?region={region}&summoner={Uri.EscapeDataString(username)}");
+            return await ParseSummonerMasteries(html);
+        }
+
+        public async Task<Highscores> GetHighscoresAsync()
+        {
+            var html = await _httpClient.GetStringAsync("https://championmastery.gg/highscores");
+            return await ParseHighscores(html);
         }
 
         public void Dispose() => _httpClient.Dispose();

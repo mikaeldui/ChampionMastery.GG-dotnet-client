@@ -7,21 +7,21 @@ namespace ChampionMasteryGg
 {
     internal static class Extensions
     {
-        public static IChampionMasteryGgChampionMasteryProgress ToChampionMasteryProgress(this HtmlNode node)
+        public static IMasteryProgress ToChampionMasteryProgress(this HtmlNode node)
         {
             var title = node.Attributes["title"].Value;
 
             if (title == "Max level")
-                return new ChampionMasteryGgChampionMasteryProgressMastered();
+                return new MasteryProgressMastered();
             else if (title.EndsWith("tokens"))
             {
                 var dataValue = node.Attributes["data-value"].Value;
                 switch (dataValue.Substring(0, 2))
                 {
                     case "60":
-                        return new ChampionMasteryGgChampionMasteryProgressTokens(int.Parse(dataValue.Substring(2, 1)), 3);
+                        return new MasteryProgressTokens(int.Parse(dataValue.Substring(2, 1)), 3);
                     case "50":
-                        return new ChampionMasteryGgChampionMasteryProgressTokens(int.Parse(dataValue.Substring(2, 1)), 2);
+                        return new MasteryProgressTokens(int.Parse(dataValue.Substring(2, 1)), 2);
                     default:
                         throw new ArgumentException("Unable to determine progress type.");
                 }
@@ -30,7 +30,7 @@ namespace ChampionMasteryGg
             {
                 var titleSplit = title.Split('/');
                 titleSplit[1] = titleSplit[1].Split(' ')[0];
-                return new ChampionMasteryGgChampionMasteryProgressPoints(int.Parse(titleSplit[0]), int.Parse(titleSplit[1]));
+                return new MasteryProgressPoints(int.Parse(titleSplit[0]), int.Parse(titleSplit[1]));
             }
             else
                 throw new ArgumentException("Unable to determine progress type.");
