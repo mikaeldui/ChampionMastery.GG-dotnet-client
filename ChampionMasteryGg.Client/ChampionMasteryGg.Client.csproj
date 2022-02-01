@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ChampionMasteryGg</RootNamespace>
+    <PackageId>MikaelDui.ChampionMasteryGg.Client</PackageId>
+    <Authors>Mikael Dúi Bolinder</Authors>
+    <Product>Mikael Dúi's ChampionMastery.GG .NET Client</Product>
+    <Description>An unofficial .NET client for ChampionMastery.GG. Get mastery highscores for League of Legends!</Description>
+    <PackageProjectUrl>https://github.com/mikaeldui/ChampionMastery.GG-dotnet-client</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>ChampionMasteryGg-512x512.png</PackageIcon>
+    <RepositoryUrl>https://github.com/mikaeldui/ChampionMastery.GG-dotnet-client</RepositoryUrl>
+    <PackageTags>LeagueOfLegends; Riot; RiotGames; Champions; Masteries; ChampionMastery.GG; Highscores;</PackageTags>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+    <AssemblyName>MikaelDui.ChampionMasteryGg.Client</AssemblyName>
+    <Copyright>The ChampionMastery.GG brand belongs to Derpthemeus</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\ChampionMasteryGg-512x512.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="*" />
+    <PackageReference Include="MikaelDui.Client.Base" Version="*" />
+    <PackageReference Include="MikaelDui.Extensions" Version="*" />
+    <PackageReference Include="MikaelDui.HtmlAgilityPack.Extensions" Version="*" />
+    <PackageReference Include="MikaelDui.Net.UserAgent" Version="*" />
+  </ItemGroup>
+
+</Project>
