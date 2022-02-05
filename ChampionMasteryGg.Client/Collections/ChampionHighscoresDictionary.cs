@@ -10,7 +10,7 @@ namespace ChampionMasteryGg
     [JsonConverter(typeof(ChampionHighscoresDictionaryConverter)), DebuggerDisplay("Champions = {Count}")]
     public class ChampionHighscoresDictionary : ChampionMasteryGgDictionary<Champion, HighscoresCollection<PointsHighscore>>
     {
-        internal ChampionHighscoresDictionary(IDictionary<Champion, HighscoresCollection<PointsHighscore>> dictionary) : base(dictionary)
+        public ChampionHighscoresDictionary(IDictionary<Champion, HighscoresCollection<PointsHighscore>> dictionary) : base(dictionary)
         {
         }
     }
