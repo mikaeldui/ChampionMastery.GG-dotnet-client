@@ -20,7 +20,7 @@ namespace ChampionMasteryGg
     {
         public override ChampionHighscoresDictionary? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var dict = JsonSerializer.Deserialize<Dictionary<int, PointsHighscoresCollection>>(ref reader, options: options);
+            var dict = JsonSerializer.Deserialize<Dictionary<int, Collection<PointsHighscore>>>(ref reader, options: options);
 
             if (dict == null)
                 return null;
@@ -29,7 +29,7 @@ namespace ChampionMasteryGg
                 typeToConvert,
                 BindingFlags.Instance | BindingFlags.Public,
                 binder: null,
-                args: new object[] { dict.ToDictionary(kvp => new Champion { Id = kvp.Key }, kvp => kvp.Value) },
+                args: new object[] { dict.ToDictionary(kvp => new Champion { Id = kvp.Key }, kvp => new PointsHighscoresCollection(kvp.Value)) },
                 culture: null);
         }
 
