@@ -4,6 +4,6 @@
     {
         public Summoner Summoner { get; }
 
-        public int Points { get; }
+        public int Score { get; }
     }
 }

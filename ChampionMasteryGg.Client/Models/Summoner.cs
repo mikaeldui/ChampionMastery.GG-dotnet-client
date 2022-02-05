@@ -33,7 +33,13 @@ namespace ChampionMasteryGg
 
         public override bool Equals(object? obj) => obj != null && GetType() == obj.GetType() && Equals((Champion)obj);
 
-        public override int GetHashCode() => (Region + Name).GetHashCode();
+        public override int GetHashCode()
+        {
+            int hashCode = 1937696043;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Region);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            return hashCode;
+        }
 
         public override string ToString() => $"{Name} ({Region})";
 
