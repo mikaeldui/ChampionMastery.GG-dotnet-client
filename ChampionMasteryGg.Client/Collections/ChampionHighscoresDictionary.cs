@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Text.Json;
@@ -14,6 +15,7 @@ namespace ChampionMasteryGg
         }
     }
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public class ChampionHighscoresDictionaryConverter : JsonConverter<ChampionHighscoresDictionary>
     {
         public override ChampionHighscoresDictionary? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

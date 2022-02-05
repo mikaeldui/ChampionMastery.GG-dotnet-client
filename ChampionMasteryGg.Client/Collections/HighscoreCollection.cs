@@ -14,7 +14,7 @@ namespace ChampionMasteryGg
     public abstract class HighscoresCollection<THighscore> : ChampionMasteryGgCollection<THighscore>, IHighscoresCollection<THighscore>
         where THighscore : IHighscore
     {
-        internal HighscoresCollection(IList<THighscore> list) : base(list)
+        public HighscoresCollection(IList<THighscore> list) : base(list)
         {
         }
 
@@ -25,21 +25,5 @@ namespace ChampionMasteryGg
         public virtual THighscore this[Summoner summoner] => this.Single(h => h.Summoner == summoner);
 
         public virtual THighscore this[string summonerName, string region] => this.Single(h => h.Summoner.Name == summonerName && h.Summoner.Region == region);
-    }
-
-    [JsonReadOnlyCollection, DebuggerDisplay("Highscores = {Count}")]
-    public class PointsHighscoresCollection : HighscoresCollection<PointsHighscore>
-    {
-        internal PointsHighscoresCollection(IList<PointsHighscore> list) : base(list)
-        {
-        }
-    }
-
-    [JsonReadOnlyCollection, DebuggerDisplay("Highscores = {Count}")]
-    public class LevelHighscoresCollection : HighscoresCollection<LevelHighscore>
-    {
-        internal LevelHighscoresCollection(IList<LevelHighscore> list) : base(list)
-        {
-        }
     }
 }
