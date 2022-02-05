@@ -11,7 +11,7 @@ namespace ChampionMasteryGg
 
     }
 
-    [JsonIReadOnlyCollection, DebuggerDisplay("Count = {Count}")]
+    [DebuggerDisplay("Count = {Count}")]
     public abstract class ChampionMasteryGgCollection<T> : ReadOnlyCollection<T>, IChampionMasterGgCollection<T>
         where T : IChampionMasteryGgObject
     {

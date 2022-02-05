@@ -10,7 +10,7 @@ namespace ChampionMasteryGg
 
     }
 
-    [JsonIReadOnlyCollection, DebuggerDisplay("Highscores = {Count}")]
+    [DebuggerDisplay("Highscores = {Count}")]
     public abstract class HighscoresCollection<THighscore> : ChampionMasteryGgCollection<THighscore>, IHighscoresCollection<THighscore>
         where THighscore : IHighscore
     {
@@ -27,7 +27,7 @@ namespace ChampionMasteryGg
         public virtual THighscore this[string summonerName, string region] => this.Single(h => h.Summoner.Name == summonerName && h.Summoner.Region == region);
     }
 
-    [JsonIReadOnlyCollection, DebuggerDisplay("Highscores = {Count}")]
+    [JsonReadOnlyCollection, DebuggerDisplay("Highscores = {Count}")]
     public class PointsHighscoresCollection : HighscoresCollection<PointsHighscore>
     {
         internal PointsHighscoresCollection(IList<PointsHighscore> list) : base(list)
@@ -35,7 +35,7 @@ namespace ChampionMasteryGg
         }
     }
 
-    [JsonIReadOnlyCollection, DebuggerDisplay("Highscores = {Count}")]
+    [JsonReadOnlyCollection, DebuggerDisplay("Highscores = {Count}")]
     public class LevelHighscoresCollection : HighscoresCollection<LevelHighscore>
     {
         internal LevelHighscoresCollection(IList<LevelHighscore> list) : base(list)

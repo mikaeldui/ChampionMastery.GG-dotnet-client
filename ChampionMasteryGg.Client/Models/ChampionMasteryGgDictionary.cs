@@ -15,7 +15,7 @@ namespace ChampionMasteryGg
 
     }
 
-    [JsonIReadOnlyDictionary, DebuggerDisplay("Count = {Count}")]
+    [DebuggerDisplay("Count = {Count}")]
     public abstract class ChampionMasteryGgDictionary<TKey, TValue> : ReadOnlyDictionary<TKey, TValue>, IChampionMasterGgDictionary<TKey, TValue>
         where TKey : IChampionMasteryGgObject
         where TValue : IChampionMasteryGgObject

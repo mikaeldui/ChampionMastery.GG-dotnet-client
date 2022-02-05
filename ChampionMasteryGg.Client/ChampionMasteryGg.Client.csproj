@@ -33,10 +33,10 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="*" />
-    <PackageReference Include="MikaelDui.Client.Base" Version="*" />
     <PackageReference Include="MikaelDui.Extensions" Version="*" />
     <PackageReference Include="MikaelDui.HtmlAgilityPack.Extensions" Version="*" />
     <PackageReference Include="MikaelDui.Net.UserAgent" Version="*" />
+	<PackageReference Include="MikaelDui.Text.Json.Serialization" Version="*" />
   </ItemGroup>
 
 </Project>
