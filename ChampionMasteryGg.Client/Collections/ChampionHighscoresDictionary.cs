@@ -20,7 +20,7 @@ namespace ChampionMasteryGg
     {
         public override ChampionHighscoresDictionary? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var dict = JsonSerializer.Deserialize<Dictionary<int, Collection<PointsHighscore>>>(ref reader, options: options);
+            var dict = JsonSerializer.Deserialize<Dictionary<int, List<PointsHighscore>>>(ref reader, options: options);
 
             if (dict == null)
                 return null;
