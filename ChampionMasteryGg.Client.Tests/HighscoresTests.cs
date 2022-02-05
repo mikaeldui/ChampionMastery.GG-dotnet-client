@@ -15,7 +15,9 @@ namespace ChampionMasteryGg.Client.Tests
         {
             using var client = new ChampionMasteryGgClient();
             var highscore = await client.GetHighscoresAsync();
-
+            Assert.AreEqual(highscore.TotalPoints.Count, 3);
+            
+            highscore = await client.GetHighscoresAsync();
             Assert.AreEqual(highscore.TotalPoints.Count, 3);
         }
 
@@ -24,6 +26,12 @@ namespace ChampionMasteryGg.Client.Tests
         {
             using ChampionMasteryGgClient client = new();
             var levelHighscores = await client.GetTotalPointsHighscoresAsync();
+            Assert.IsNotNull(levelHighscores);
+            Assert.AreEqual(50, levelHighscores.Count);
+            Assert.IsTrue(!string.IsNullOrWhiteSpace(levelHighscores.First().Summoner.Name));
+            Assert.AreEqual(8, levelHighscores.First().Points.ToString().Length);
+            
+            levelHighscores = await client.GetTotalPointsHighscoresAsync();
             Assert.IsNotNull(levelHighscores);
             Assert.AreEqual(50, levelHighscores.Count);
             Assert.IsTrue(!string.IsNullOrWhiteSpace(levelHighscores.First().Summoner.Name));
@@ -40,6 +48,12 @@ namespace ChampionMasteryGg.Client.Tests
             Assert.AreEqual(50, levelHighscores.Count);
             Assert.IsTrue(!string.IsNullOrWhiteSpace(levelHighscores.First().Summoner.Name));
             Assert.AreEqual(4, levelHighscores.First().Level.ToString().Length);
+
+            levelHighscores = await client.GetTotalLevelHighscoresAsync();
+            Assert.IsNotNull(levelHighscores);
+            Assert.AreEqual(50, levelHighscores.Count);
+            Assert.IsTrue(!string.IsNullOrWhiteSpace(levelHighscores.First().Summoner.Name));
+            Assert.AreEqual(4, levelHighscores.First().Level.ToString().Length);
         }
 
 
@@ -48,6 +62,12 @@ namespace ChampionMasteryGg.Client.Tests
         {
             using ChampionMasteryGgClient client = new();
             var levelHighscores = await client.GetHighscoresAsync(1);
+            Assert.IsNotNull(levelHighscores);
+            Assert.AreEqual(50, levelHighscores.Count);
+            Assert.IsTrue(!string.IsNullOrWhiteSpace(levelHighscores.First().Summoner.Name));
+            Assert.AreEqual(8, levelHighscores.First().Points.ToString().Length);
+
+            levelHighscores = await client.GetHighscoresAsync(1);
             Assert.IsNotNull(levelHighscores);
             Assert.AreEqual(50, levelHighscores.Count);
             Assert.IsTrue(!string.IsNullOrWhiteSpace(levelHighscores.First().Summoner.Name));

@@ -5,6 +5,11 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using ChampionMasteryGg.Parsers;
+using System.Net.Http.Json;
+
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8603 // Possible null reference return.
+#pragma warning disable CS8619 // Nullability of reference types in value doesn't match target type.
 
 namespace ChampionMasteryGg
 {
@@ -15,6 +20,16 @@ namespace ChampionMasteryGg
         private static (Highscores Highscores, DateTime Downloaded)? _highscores;
         private static (HighscoresCollection<LevelHighscore> Highscores, DateTime Downloaded)? _totalLevelHighscores;
         private static readonly Dictionary<int, (HighscoresCollection<PointsHighscore> Highscores, DateTime Downloaded)> _championHighscores = new();
+
+        /// <summary>
+        /// Change this if you're using a proxy. Default is "https://championmastery.gg/".
+        /// </summary>
+        public static string BaseAddress { get; set; } = "https://championmastery.gg/";
+
+        /// <summary>
+        /// If you're using a proxy and is returning JSON complying to the schema of this library then you can set this to <see cref="ChampionMasteryGgEncoding.Json"/>.
+        /// </summary>
+        public static ChampionMasteryGgEncoding Encoding { get; set; } = ChampionMasteryGgEncoding.Html;
 
         static ChampionMasteryGgClient()
         {
@@ -36,6 +51,7 @@ namespace ChampionMasteryGg
         public ChampionMasteryGgClient()
         {
             _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri(BaseAddress);
             _httpClient.DefaultRequestHeaders.Add("User-Agent", USER_AGENT);
         }
 
@@ -47,8 +63,17 @@ namespace ChampionMasteryGg
                     return _highscores.Value.Highscores;
                 else
                 {
-                    var html = await _httpClient.GetStringAsync("https://championmastery.gg/highscores");
-                    var highscores = await HighscoresParser.ParseAsync(html);
+                    Highscores highscores = null;
+                    switch (Encoding)
+                    {
+                        case ChampionMasteryGgEncoding.Html:
+                            var html = await _httpClient.GetStringAsync("highscores");
+                            highscores = await HighscoresParser.ParseAsync(html);
+                            break;
+                        case ChampionMasteryGgEncoding.Json:
+                            highscores = await _httpClient.GetFromJsonAsync<Highscores>("highscores");
+                            break;
+                    }
                     _highscores = (highscores, DateTime.Now);
                     return highscores;
                 }
@@ -69,8 +94,17 @@ namespace ChampionMasteryGg
                     return _totalLevelHighscores.Value.Highscores;
                 else
                 {
-                    var html = await _httpClient.GetStringAsync("https://championmastery.gg/champion?champion=-2");
-                    var highscores = await LevelHighscoresParser.ParseAsync(html);
+                    LevelHighscoresCollection highscores = null;
+                    switch (Encoding)
+                    {
+                        case ChampionMasteryGgEncoding.Html:
+                            var html = await _httpClient.GetStringAsync("champion?champion=-2");
+                            highscores = await LevelHighscoresParser.ParseAsync(html);
+                            break;
+                        case ChampionMasteryGgEncoding.Json:
+                            highscores = await _httpClient.GetFromJsonAsync<LevelHighscoresCollection>("champion?champion=-2");
+                            break;
+                    }
                     _totalLevelHighscores = (highscores, DateTime.Now);
                     return highscores;
                 }
@@ -89,8 +123,17 @@ namespace ChampionMasteryGg
                     return cachedHighscore.Highscores;
                 else
                 {
-                    var html = await _httpClient.GetStringAsync($"https://championmastery.gg/champion?champion={championId}");
-                    var highscores = await PointsHighscoresParser.ParseAsync(html);
+                    PointsHighscoresCollection highscores = null;
+                    switch (Encoding)
+                    {
+                        case ChampionMasteryGgEncoding.Html:
+                            var html = await _httpClient.GetStringAsync($"champion?champion={championId}");
+                            highscores = await PointsHighscoresParser.ParseAsync(html);
+                            break;
+                        case ChampionMasteryGgEncoding.Json:
+                            highscores = await _httpClient.GetFromJsonAsync<PointsHighscoresCollection>($"champion?champion={championId}");
+                            break;
+                    }
                     _championHighscores[championId] = (highscores, DateTime.Now);
                     return highscores;
                 }
@@ -106,3 +149,7 @@ namespace ChampionMasteryGg
         public void Dispose() => _httpClient.Dispose();
     }
 }
+
+#pragma warning restore CS8619 // Nullability of reference types in value doesn't match target type.
+#pragma warning restore CS8603 // Possible null reference return.
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
