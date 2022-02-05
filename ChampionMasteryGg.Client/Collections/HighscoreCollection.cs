@@ -1,16 +1,18 @@
 ﻿using System.Diagnostics;
 using System.Text.Json.Serialization;
 using System.Linq;
+using System.ComponentModel;
 
 namespace ChampionMasteryGg
 {
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IHighscoresCollection<THighscores> : IChampionMasterGgCollection<THighscores>
         where THighscores : IHighscore
     {
 
     }
 
-    [DebuggerDisplay("Highscores = {Count}")]
+    [EditorBrowsable(EditorBrowsableState.Never), DebuggerDisplay("Highscores = {Count}")]
     public abstract class HighscoresCollection<THighscore> : ChampionMasteryGgCollection<THighscore>, IHighscoresCollection<THighscore>
         where THighscore : IHighscore
     {

@@ -18,8 +18,8 @@ namespace ChampionMasteryGg
         private static readonly string USER_AGENT;
 
         private static (Highscores Highscores, DateTime Downloaded)? _highscores;
-        private static (HighscoresCollection<LevelHighscore> Highscores, DateTime Downloaded)? _totalLevelHighscores;
-        private static readonly Dictionary<int, (HighscoresCollection<PointsHighscore> Highscores, DateTime Downloaded)> _championHighscores = new();
+        private static (LevelHighscoresCollection Highscores, DateTime Downloaded)? _totalLevelHighscores;
+        private static readonly Dictionary<int, (PointsHighscoresCollection Highscores, DateTime Downloaded)> _championHighscores = new();
 
         /// <summary>
         /// Change this if you're using a proxy. Default is "https://championmastery.gg/".
@@ -84,9 +84,9 @@ namespace ChampionMasteryGg
             }
         }
 
-        public async Task<HighscoresCollection<PointsHighscore>> GetTotalPointsHighscoresAsync() => await GetHighscoresAsync(-1);
+        public async Task<PointsHighscoresCollection> GetTotalPointsHighscoresAsync() => await GetHighscoresAsync(-1);
 
-        public async Task<HighscoresCollection<LevelHighscore>> GetTotalLevelHighscoresAsync()
+        public async Task<LevelHighscoresCollection> GetTotalLevelHighscoresAsync()
         {
             try
             {
@@ -115,7 +115,7 @@ namespace ChampionMasteryGg
             }
         }
 
-        public async Task<HighscoresCollection<PointsHighscore>> GetHighscoresAsync(int championId)
+        public async Task<PointsHighscoresCollection> GetHighscoresAsync(int championId)
         {
             try
             {
@@ -144,7 +144,7 @@ namespace ChampionMasteryGg
             }
         }
 
-        public async Task<HighscoresCollection<PointsHighscore>> GetHighscoresAsync(Champion champion) => await GetHighscoresAsync(champion.Id);
+        public async Task<PointsHighscoresCollection> GetHighscoresAsync(Champion champion) => await GetHighscoresAsync(champion.Id);
 
         public void Dispose() => _httpClient.Dispose();
     }

@@ -8,9 +8,9 @@ using System.Text.Json.Serialization;
 namespace ChampionMasteryGg
 {
     [JsonConverter(typeof(ChampionHighscoresDictionaryConverter)), DebuggerDisplay("Champions = {Count}")]
-    public class ChampionHighscoresDictionary : ChampionMasteryGgDictionary<Champion, HighscoresCollection<PointsHighscore>>
+    public class ChampionHighscoresDictionary : ChampionMasteryGgDictionary<Champion, PointsHighscoresCollection>
     {
-        public ChampionHighscoresDictionary(IDictionary<Champion, HighscoresCollection<PointsHighscore>> dictionary) : base(dictionary)
+        public ChampionHighscoresDictionary(IDictionary<Champion, PointsHighscoresCollection> dictionary) : base(dictionary)
         {
         }
     }

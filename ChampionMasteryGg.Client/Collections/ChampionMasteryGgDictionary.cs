@@ -5,9 +5,11 @@ using System.Collections;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using System.ComponentModel;
 
 namespace ChampionMasteryGg
 {
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IChampionMasterGgDictionary<TKey, TValue> : IChampionMasteryGgObject, ICollection<KeyValuePair<TKey, TValue>>, IEnumerable<KeyValuePair<TKey, TValue>>, IEnumerable, IDictionary<TKey, TValue>, IReadOnlyCollection<KeyValuePair<TKey, TValue>>, IReadOnlyDictionary<TKey, TValue>, ICollection, IDictionary
         where TKey : IChampionMasteryGgObject
         where TValue : IChampionMasteryGgObject
@@ -15,7 +17,7 @@ namespace ChampionMasteryGg
 
     }
 
-    [DebuggerDisplay("Count = {Count}")]
+    [EditorBrowsable(EditorBrowsableState.Never),DebuggerDisplay("Count = {Count}")]
     public abstract class ChampionMasteryGgDictionary<TKey, TValue> : ReadOnlyDictionary<TKey, TValue>, IChampionMasterGgDictionary<TKey, TValue>
         where TKey : IChampionMasteryGgObject
         where TValue : IChampionMasteryGgObject

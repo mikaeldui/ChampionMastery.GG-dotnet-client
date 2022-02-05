@@ -39,7 +39,7 @@ namespace ChampionMasteryGg.Parsers
 
         private static ChampionHighscoresDictionary ParseChampionHighscoreListNodes(IEnumerable<HtmlNode> divs)
         {
-            Dictionary<Champion, HighscoresCollection<PointsHighscore>> championHighscores = new();
+            Dictionary<Champion, PointsHighscoresCollection> championHighscores = new();
             foreach (var cell in divs)
             {
                 var championInfo = cell.SelectSingleNode(".//div[@class='champion-info']");
