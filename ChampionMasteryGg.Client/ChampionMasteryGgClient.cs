@@ -19,9 +19,14 @@ namespace ChampionMasteryGg
         static ChampionMasteryGgClient()
         {
             var client = UserAgent.From(typeof(ChampionMasteryGgClient).GetTypeInfo().Assembly);
-            var entryAssembly = Assembly.GetEntryAssembly();
-            if (entryAssembly != null)
-                client.DependentProduct = UserAgent.From(entryAssembly);
+
+            try
+            {
+                var entryAssembly = Assembly.GetEntryAssembly();
+                if (entryAssembly != null)
+                    client.DependentProduct = UserAgent.From(entryAssembly);
+            }
+            catch { }
 
             USER_AGENT = client.ToString();
         }
