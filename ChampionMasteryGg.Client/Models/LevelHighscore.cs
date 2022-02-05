@@ -11,9 +11,9 @@ namespace ChampionMasteryGg
             Level = level;
         }
 
-        public Summoner Summoner { get; }
+        public Summoner Summoner { get; set; }
 
-        public int Level { get; }
+        public int Level { get; set; }
 
         int IHighscore.Score => Level;
 

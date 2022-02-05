@@ -20,7 +20,7 @@ namespace ChampionMasteryGg
     {
         public override ChampionHighscoresDictionary? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var dict = JsonSerializer.Deserialize<Dictionary<int, HighscoresCollection<PointsHighscore>>>(ref reader, options: options);
+            var dict = JsonSerializer.Deserialize<Dictionary<int, PointsHighscoresCollection>>(ref reader, options: options);
 
             if (dict == null)
                 return null;
@@ -34,6 +34,6 @@ namespace ChampionMasteryGg
         }
 
         public override void Write(Utf8JsonWriter writer, ChampionHighscoresDictionary dictionary, JsonSerializerOptions options) =>
-            JsonSerializer.Serialize(writer, dictionary?.ToDictionary(kvp => kvp.Key.Id, kvp => kvp.Value), options);
+            JsonSerializer.Serialize(writer, dictionary?.ToDictionary(kvp => kvp.Key.Id, kvp => kvp.Value.ToList()), options);
     }
 }

@@ -9,7 +9,6 @@ namespace ChampionMasteryGg
     public interface IHighscoresCollection<THighscores> : IChampionMasterGgCollection<THighscores>
         where THighscores : IHighscore
     {
-
     }
 
     [EditorBrowsable(EditorBrowsableState.Never), DebuggerDisplay("Highscores = {Count}")]

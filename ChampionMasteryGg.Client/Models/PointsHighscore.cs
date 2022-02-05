@@ -11,9 +11,9 @@ namespace ChampionMasteryGg
             Points = points;
         }
 
-        public Summoner Summoner { get; }
+        public Summoner Summoner { get; set; }
 
-        public int Points { get; }
+        public int Points { get; set; }
 
         int IHighscore.Score => Points;
 
